@@ -1,0 +1,1029 @@
+/* ═══════════════════════════════════════════════════════════════
+   ScoutAgent Pro — Design System & Component Styles
+   Dark football analytics theme
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Imports ─────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* ── Design Tokens ───────────────────────────────────────────── */
+:root {
+  --bg:          #05080F;
+  --s1:          #09101C;
+  --s2:          #0D1525;
+  --s3:          #12192E;
+  --b1:          #192437;
+  --b2:          #223349;
+  --b3:          #2E4465;
+
+  --green:       #00E87D;
+  --green-dim:   rgba(0, 232, 125, 0.09);
+  --green-soft:  rgba(0, 232, 125, 0.18);
+  --amber:       #FF8C00;
+  --amber-dim:   rgba(255, 140, 0, 0.09);
+  --blue:        #3B8EFF;
+  --blue-dim:    rgba(59, 142, 255, 0.09);
+  --red:         #FF4545;
+  --red-dim:     rgba(255, 69, 69, 0.09);
+  --purple:      #B87DFF;
+  --purple-dim:  rgba(184, 125, 255, 0.09);
+
+  --t1:          #E2EDFF;
+  --t2:          #7A92B0;
+  --t3:          #3D5270;
+
+  --font-display: 'Syne', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   14px;
+  --radius-xl:   18px;
+  --radius-full: 9999px;
+
+  --space-1: 4px;   --space-2: 8px;   --space-3: 12px;
+  --space-4: 16px;  --space-5: 20px;  --space-6: 24px;
+}
+
+/* ── Global Reset ────────────────────────────────────────────── */
+* { box-sizing: border-box; }
+
+html, body, [data-testid="stAppViewContainer"] {
+  background-color: var(--bg) !important;
+  font-family: var(--font-body) !important;
+  color: var(--t1) !important;
+}
+
+/* ── Streamlit Chrome Overrides ──────────────────────────────── */
+[data-testid="stAppViewContainer"] { background: var(--bg) !important; }
+[data-testid="stHeader"]           { background: transparent !important; display: none; }
+[data-testid="stToolbar"]          { display: none !important; }
+[data-testid="stDecoration"]       { display: none !important; }
+[data-testid="stMainMenu"]         { display: none !important; }
+footer                             { display: none !important; }
+#MainMenu                          { display: none !important; }
+
+/* ── Sidebar ─────────────────────────────────────────────────── */
+[data-testid="stSidebar"] {
+  background: var(--s1) !important;
+  border-right: 1px solid var(--b1) !important;
+  min-width: 220px !important;
+  max-width: 220px !important;
+}
+
+[data-testid="stSidebar"] > div {
+  padding: 0 !important;
+}
+
+/* Hide default streamlit sidebar padding */
+[data-testid="stSidebar"] .stMarkdown { padding: 0 4px; }
+
+/* Sidebar nav buttons */
+[data-testid="stSidebar"] .stButton button {
+  width: 100% !important;
+  text-align: left !important;
+  background: transparent !important;
+  border: none !important;
+  border-radius: var(--radius-sm) !important;
+  color: var(--t2) !important;
+  font-family: var(--font-body) !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  padding: 9px 10px !important;
+  transition: all 0.15s ease !important;
+  cursor: pointer !important;
+  margin-bottom: 2px !important;
+}
+
+[data-testid="stSidebar"] .stButton button:hover {
+  background: var(--green-dim) !important;
+  color: var(--t1) !important;
+}
+
+/* Main content area */
+[data-testid="stMain"] {
+  background: var(--bg) !important;
+  padding: 0 20px 20px !important;
+}
+
+[data-testid="block-container"] {
+  padding: 16px 20px 24px !important;
+  max-width: 100% !important;
+}
+
+/* ── Typography ──────────────────────────────────────────────── */
+h1, h2, h3, h4 {
+  font-family: var(--font-display) !important;
+  color: var(--t1) !important;
+}
+
+h1 { font-size: 24px !important; font-weight: 800 !important; }
+h2 { font-size: 18px !important; font-weight: 700 !important; }
+h3 { font-size: 15px !important; font-weight: 700 !important; }
+
+.page-title {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--t1);
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Brand Block ─────────────────────────────────────────────── */
+.brand-block {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 16px 14px;
+  border-bottom: 1px solid var(--b1);
+}
+
+.brand-icon {
+  width: 34px;
+  height: 34px;
+  background: var(--green);
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  box-shadow: 0 0 16px rgba(0, 232, 125, 0.4);
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--t1);
+  letter-spacing: 0.03em;
+}
+
+.brand-sub {
+  font-size: 9px;
+  color: var(--green);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-top: 1px;
+}
+
+/* ── Sidebar HR ──────────────────────────────────────────────── */
+.sidebar-hr {
+  border: none;
+  border-top: 1px solid var(--b1);
+  margin: 8px 0;
+}
+
+/* ── Agent Status Strip ──────────────────────────────────────── */
+.agent-status-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 12px;
+  margin: 4px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-family: var(--font-body);
+}
+
+.agent-active {
+  background: var(--green-dim);
+  border: 1px solid rgba(0, 232, 125, 0.25);
+  color: var(--green);
+  animation: subtlePulse 2s ease-in-out infinite;
+}
+
+.agent-idle {
+  background: transparent;
+  border: 1px solid var(--b1);
+  color: var(--t3);
+}
+
+.step-counter {
+  background: var(--green);
+  color: #04080D;
+  border-radius: var(--radius-full);
+  padding: 1px 6px;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+/* ── Club Profile ────────────────────────────────────────────── */
+.club-profile {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px 14px;
+  border-top: 1px solid var(--b1);
+}
+
+.club-avatar {
+  width: 30px;
+  height: 30px;
+  background: rgba(59, 142, 255, 0.15);
+  border: 1px solid rgba(59, 142, 255, 0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--blue);
+}
+
+.club-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--t1);
+  font-family: var(--font-body);
+}
+
+.club-league {
+  font-size: 9px;
+  color: var(--t3);
+}
+
+/* ── Top Bar ─────────────────────────────────────────────────── */
+.topbar-agent-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 700;
+  font-family: var(--font-body);
+}
+
+.topbar-agent-pill.running {
+  background: var(--green-dim);
+  border: 1px solid rgba(0, 232, 125, 0.3);
+  color: var(--green);
+}
+
+.topbar-divider {
+  height: 1px;
+  background: var(--b1);
+  margin: 12px 0 16px;
+}
+
+.pulse-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background: var(--green);
+  border-radius: 50%;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+/* ── Agent Dots Row ──────────────────────────────────────────── */
+.agent-dots-row {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  justify-content: flex-end;
+  padding-top: 4px;
+}
+
+.agent-dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  font-size: 9px;
+  font-weight: 700;
+  font-family: var(--font-body);
+  transition: all 0.3s ease;
+}
+
+.dot-active {
+  background: var(--green-dim);
+  border: 1px solid rgba(0, 232, 125, 0.4);
+  color: var(--green);
+  animation: glow 2s ease infinite;
+}
+
+.dot-idle {
+  background: var(--s2);
+  border: 1px solid var(--b1);
+  color: var(--t3);
+}
+
+/* ── Buttons ─────────────────────────────────────────────────── */
+.stButton button[kind="primary"] {
+  background: var(--green) !important;
+  color: #04080D !important;
+  border: none !important;
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+  font-size: 12px !important;
+  border-radius: var(--radius-sm) !important;
+  transition: opacity 0.15s ease !important;
+}
+
+.stButton button[kind="primary"]:hover {
+  opacity: 0.85 !important;
+}
+
+.stButton button[kind="secondary"] {
+  background: transparent !important;
+  color: var(--t2) !important;
+  border: 1px solid var(--b1) !important;
+  font-family: var(--font-body) !important;
+  font-size: 12px !important;
+  border-radius: var(--radius-sm) !important;
+  transition: all 0.15s ease !important;
+}
+
+.stButton button[kind="secondary"]:hover {
+  background: var(--s3) !important;
+  border-color: var(--b2) !important;
+  color: var(--t1) !important;
+}
+
+/* ── Cards ───────────────────────────────────────────────────── */
+.card {
+  background: var(--s2);
+  border: 1px solid var(--b1);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  margin-bottom: var(--space-4);
+  transition: all 0.18s ease;
+}
+
+.card:hover { border-color: var(--b2); }
+
+.card-accent-green  { border-top: 2px solid var(--green); }
+.card-accent-blue   { border-top: 2px solid var(--blue); }
+.card-accent-amber  { border-top: 2px solid var(--amber); }
+.card-accent-purple { border-top: 2px solid var(--purple); }
+.card-accent-red    { border-top: 2px solid var(--red); }
+
+.card-left-green  { border-left: 3px solid var(--green)  !important; }
+.card-left-blue   { border-left: 3px solid var(--blue)   !important; }
+.card-left-amber  { border-left: 3px solid var(--amber)  !important; }
+.card-left-purple { border-left: 3px solid var(--purple) !important; }
+.card-left-red    { border-left: 3px solid var(--red)    !important; }
+
+/* ── KPI Cards ───────────────────────────────────────────────── */
+.kpi-card {
+  background: var(--s2);
+  border: 1px solid var(--b1);
+  border-radius: var(--radius-md);
+  padding: 16px;
+}
+
+.kpi-label {
+  font-size: 10px;
+  color: var(--t3);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-family: var(--font-body);
+  margin-bottom: 10px;
+}
+
+.kpi-value {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--t1);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.kpi-delta {
+  font-size: 11px;
+  color: var(--t2);
+  font-family: var(--font-body);
+}
+
+/* ── Player Cards ────────────────────────────────────────────── */
+.player-card {
+  background: var(--s2);
+  border: 1px solid var(--b1);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  transition: all 0.18s ease;
+  cursor: pointer;
+  height: 100%;
+}
+
+.player-card:hover {
+  background: var(--s3);
+  border-color: var(--b2);
+  transform: translateY(-1px);
+}
+
+.player-name {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--t1);
+  margin-bottom: 2px;
+}
+
+.player-club {
+  font-size: 11px;
+  color: var(--t2);
+  font-family: var(--font-body);
+}
+
+.match-score {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.score-high  { color: var(--green); }
+.score-mid   { color: var(--amber); }
+.score-low   { color: var(--t2); }
+
+/* ── Badges ──────────────────────────────────────────────────── */
+.badge {
+  display: inline-block;
+  border-radius: 4px;
+  padding: 2px 7px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-family: var(--font-body);
+}
+
+.badge-green  { background: rgba(0,232,125,0.12);  color: var(--green);  border: 1px solid rgba(0,232,125,0.25);  }
+.badge-amber  { background: rgba(255,140,0,0.12);  color: var(--amber);  border: 1px solid rgba(255,140,0,0.25);  }
+.badge-blue   { background: rgba(59,142,255,0.12); color: var(--blue);   border: 1px solid rgba(59,142,255,0.25); }
+.badge-red    { background: rgba(255,69,69,0.12);  color: var(--red);    border: 1px solid rgba(255,69,69,0.25);  }
+.badge-purple { background: rgba(184,125,255,0.12);color: var(--purple); border: 1px solid rgba(184,125,255,0.25);}
+.badge-muted  { background: rgba(61,82,112,0.25);  color: var(--t3);     border: 1px solid var(--b1);             }
+
+/* ── Agent Steps / Reasoning Panel ──────────────────────────── */
+.agent-step {
+  display: flex;
+  gap: 10px;
+  padding: 10px 12px;
+  background: var(--s1);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--blue);
+  margin-bottom: 8px;
+  animation: slideIn 0.3s ease;
+}
+
+.agent-step.type-plan   { border-left-color: var(--purple); }
+.agent-step.type-tool   { border-left-color: var(--blue); }
+.agent-step.type-memory { border-left-color: var(--amber); }
+.agent-step.type-output { border-left-color: var(--green); }
+
+.agent-step-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+
+.agent-step-mono {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--t3);
+  margin-bottom: 4px;
+  opacity: 0.8;
+}
+
+.agent-step-desc {
+  font-size: 11px;
+  color: var(--t2);
+  font-family: var(--font-body);
+  line-height: 1.5;
+}
+
+.agent-step-output {
+  margin-top: 6px;
+  padding: 6px 8px;
+  background: var(--bg);
+  border-radius: 4px;
+  border: 1px solid var(--b1);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--green);
+}
+
+/* ── Stat Bars ───────────────────────────────────────────────── */
+.stat-bar-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 7px;
+}
+
+.stat-bar-track {
+  flex: 1;
+  height: 5px;
+  background: var(--b1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.stat-bar-fill-green  { height: 100%; background: var(--green); border-radius: 3px; transition: width 0.8s ease; }
+.stat-bar-fill-blue   { height: 100%; background: var(--blue);  border-radius: 3px; transition: width 0.8s ease; }
+.stat-bar-fill-amber  { height: 100%; background: var(--amber); border-radius: 3px; transition: width 0.8s ease; }
+
+.stat-label {
+  font-size: 10px;
+  color: var(--t3);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  width: 60px;
+  font-family: var(--font-body);
+}
+
+.stat-value {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  width: 26px;
+  text-align: right;
+}
+
+/* ── Transfer Target Cards ───────────────────────────────────── */
+.target-card {
+  display: flex;
+  gap: 14px;
+  padding: 14px 16px;
+  background: var(--s1);
+  border: 1px solid var(--b1);
+  border-radius: var(--radius-md);
+  margin-bottom: 10px;
+  transition: all 0.15s ease;
+}
+
+.target-card:hover {
+  background: var(--s2);
+  border-color: var(--b2);
+}
+
+.target-rank {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--b2);
+  flex-shrink: 0;
+  width: 26px;
+  text-align: center;
+  padding-top: 2px;
+}
+
+.target-name {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--t1);
+  margin-bottom: 2px;
+}
+
+.target-club {
+  font-size: 11px;
+  color: var(--t2);
+  font-family: var(--font-body);
+  margin-bottom: 6px;
+}
+
+.target-reason {
+  font-size: 11px;
+  color: var(--t2);
+  line-height: 1.6;
+  font-family: var(--font-body);
+  margin-bottom: 8px;
+}
+
+.fit-bar-track {
+  flex: 1;
+  height: 5px;
+  background: var(--b1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+/* ── Memory Cards ────────────────────────────────────────────── */
+.memory-card {
+  display: flex;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--s1);
+  border: 1px solid var(--b1);
+  border-radius: var(--radius-md);
+  border-left: 3px solid var(--green);
+  margin-bottom: 10px;
+  animation: fadeIn 0.4s ease;
+}
+
+.memory-title {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--t1);
+  margin-bottom: 4px;
+}
+
+.memory-body {
+  font-size: 11px;
+  color: var(--t2);
+  line-height: 1.65;
+  font-family: var(--font-body);
+}
+
+.memory-meta {
+  font-size: 10px;
+  color: var(--t3);
+  margin-top: 5px;
+  font-family: var(--font-body);
+}
+
+/* ── Formation / Squad Builder ───────────────────────────────── */
+.pitch-surface {
+  background: linear-gradient(180deg, #0A3020 0%, #071D12 100%);
+  border-radius: 12px;
+  border: 1px solid #0F4028;
+  position: relative;
+  overflow: hidden;
+}
+
+.position-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.position-circle {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  font-family: var(--font-body);
+  transition: all 0.2s ease;
+}
+
+.position-circle.filled {
+  background: rgba(0, 232, 125, 0.12);
+  border: 2px solid rgba(0, 232, 125, 0.4);
+  color: var(--green);
+}
+
+.position-circle.empty {
+  background: rgba(255, 140, 0, 0.12);
+  border: 2px solid var(--amber);
+  color: var(--amber);
+  animation: glow-amber 2s ease infinite;
+}
+
+/* ── Execution Timeline ──────────────────────────────────────── */
+.trace-step {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 4px;
+  animation: slideIn 0.35s ease;
+}
+
+.trace-connector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 36px;
+  flex-shrink: 0;
+}
+
+.trace-dot {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 10px;
+}
+
+.trace-line {
+  width: 1px;
+  flex: 1;
+  min-height: 8px;
+  margin: 2px 0;
+}
+
+.trace-body {
+  flex: 1;
+  background: var(--s2);
+  border: 1px solid var(--b1);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  margin-left: 8px;
+  margin-bottom: 4px;
+}
+
+.trace-body.running {
+  animation: borderPulse 1.5s ease infinite;
+}
+
+.trace-output {
+  margin-top: 6px;
+  padding: 7px 10px;
+  background: var(--bg);
+  border-radius: 5px;
+  border: 1px solid var(--b1);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--green);
+}
+
+/* ── Inputs ──────────────────────────────────────────────────── */
+.stTextInput > div > div > input,
+.stSelectbox > div > div > div,
+.stMultiSelect > div > div > div {
+  background: var(--s1) !important;
+  border: 1px solid var(--b1) !important;
+  border-radius: var(--radius-sm) !important;
+  color: var(--t1) !important;
+  font-family: var(--font-body) !important;
+  font-size: 13px !important;
+}
+
+.stTextInput > div > div > input:focus {
+  border-color: var(--green) !important;
+  box-shadow: 0 0 0 2px rgba(0, 232, 125, 0.15) !important;
+}
+
+.stSlider > div > div > div > div {
+  background: var(--green) !important;
+}
+
+/* ── Tabs ────────────────────────────────────────────────────── */
+.stTabs [data-baseweb="tab-list"] {
+  background: var(--s1) !important;
+  border-bottom: 1px solid var(--b1) !important;
+  gap: 0 !important;
+}
+
+.stTabs [data-baseweb="tab"] {
+  background: transparent !important;
+  border: none !important;
+  color: var(--t2) !important;
+  font-family: var(--font-body) !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  padding: 10px 18px !important;
+  border-bottom: 2px solid transparent !important;
+}
+
+.stTabs [aria-selected="true"] {
+  color: var(--green) !important;
+  border-bottom-color: var(--green) !important;
+}
+
+.stTabs [data-baseweb="tab-panel"] {
+  background: transparent !important;
+  padding: 16px 0 !important;
+}
+
+/* ── Dividers ────────────────────────────────────────────────── */
+.stDivider { background: var(--b1) !important; }
+hr { border-color: var(--b1) !important; }
+
+/* ── Expanders ───────────────────────────────────────────────── */
+.streamlit-expanderHeader {
+  background: var(--s2) !important;
+  border: 1px solid var(--b1) !important;
+  border-radius: var(--radius-sm) !important;
+  color: var(--t1) !important;
+  font-family: var(--font-body) !important;
+}
+
+.streamlit-expanderContent {
+  background: var(--s1) !important;
+  border: 1px solid var(--b1) !important;
+  border-top: none !important;
+}
+
+/* ── Metrics ─────────────────────────────────────────────────── */
+[data-testid="stMetric"] {
+  background: var(--s2) !important;
+  border: 1px solid var(--b1) !important;
+  border-radius: var(--radius-md) !important;
+  padding: 14px !important;
+}
+
+[data-testid="stMetricLabel"] {
+  font-size: 10px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.07em !important;
+  color: var(--t3) !important;
+  font-family: var(--font-body) !important;
+}
+
+[data-testid="stMetricValue"] {
+  font-family: var(--font-display) !important;
+  font-size: 26px !important;
+  font-weight: 800 !important;
+  color: var(--t1) !important;
+}
+
+[data-testid="stMetricDelta"] {
+  font-size: 11px !important;
+  color: var(--green) !important;
+}
+
+/* ── Dataframes / Tables ─────────────────────────────────────── */
+[data-testid="stDataFrame"] {
+  background: var(--s2) !important;
+  border: 1px solid var(--b1) !important;
+  border-radius: var(--radius-md) !important;
+}
+
+.stDataFrame thead th {
+  background: var(--s1) !important;
+  color: var(--t3) !important;
+  font-family: var(--font-body) !important;
+  font-size: 10px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  border-bottom: 1px solid var(--b1) !important;
+}
+
+.stDataFrame tbody td {
+  color: var(--t2) !important;
+  font-family: var(--font-body) !important;
+  font-size: 12px !important;
+  border-bottom: 1px solid var(--b1) !important;
+}
+
+.stDataFrame tbody tr:hover td {
+  background: var(--s3) !important;
+}
+
+/* ── Plotly Charts ───────────────────────────────────────────── */
+.js-plotly-plot {
+  background: transparent !important;
+}
+
+/* ── Scrollbar ───────────────────────────────────────────────── */
+::-webkit-scrollbar       { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: var(--s1); }
+::-webkit-scrollbar-thumb { background: var(--b2); border-radius: 2px; }
+
+/* ── Animations ──────────────────────────────────────────────── */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+
+@keyframes subtlePulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.75; }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(0, 232, 125, 0.3); }
+  50%       { box-shadow: 0 0 20px rgba(0, 232, 125, 0.6); }
+}
+
+@keyframes glow-amber {
+  0%, 100% { box-shadow: 0 0 8px rgba(255, 140, 0, 0.3); }
+  50%       { box-shadow: 0 0 20px rgba(255, 140, 0, 0.6); }
+}
+
+@keyframes borderPulse {
+  0%, 100% { border-color: var(--b2); }
+  50%       { border-color: var(--green); }
+}
+
+/* ── Utility Classes ─────────────────────────────────────────── */
+.text-green  { color: var(--green)  !important; }
+.text-amber  { color: var(--amber)  !important; }
+.text-blue   { color: var(--blue)   !important; }
+.text-red    { color: var(--red)    !important; }
+.text-purple { color: var(--purple) !important; }
+.text-muted  { color: var(--t3)     !important; }
+.text-secondary { color: var(--t2)  !important; }
+
+.font-display { font-family: var(--font-display) !important; }
+.font-mono    { font-family: var(--font-mono)    !important; }
+
+.uppercase { text-transform: uppercase !important; letter-spacing: 0.06em !important; }
+
+/* ── Navigation Badge / Live Dot ─────────────────────────────── */
+.nav-badge {
+  background: var(--green);
+  color: #04080D;
+  border-radius: var(--radius-full);
+  padding: 1px 6px;
+  font-size: 9px;
+  font-weight: 700;
+  margin-left: auto;
+}
+
+.nav-live-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--green);
+  border-radius: 50%;
+  margin-left: auto;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@media (max-width: 1100px) {
+  /* 4-col KPI row → 2×2 */
+  [data-testid="stHorizontalBlock"] > [data-testid="stVerticalBlock"] {
+    min-width: 45% !important;
+    flex: 1 1 45% !important;
+  }
+  /* 3-col layout → stack */
+  [data-testid="stHorizontalBlock"]:has(> :nth-child(3)) > [data-testid="stVerticalBlock"] {
+    min-width: 48% !important;
+    flex: 1 1 48% !important;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  [data-testid="stHorizontalBlock"] > [data-testid="stVerticalBlock"] {
+    min-width: 100% !important;
+    flex: 1 1 100% !important;
+  }
+  /* Tighten sidebar */
+  [data-testid="stSidebar"] {
+    min-width: 180px !important;
+    max-width: 180px !important;
+  }
+  .brand-name { font-size: 11px !important; }
+  .agent-dots-row {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+  .topbar-agent-pill {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .agent-step,
+  .target-card,
+  .memory-card,
+  .trace-step {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .trace-connector {
+    width: 100%;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+  .trace-line {
+    display: none;
+  }
+  .stat-bar-container {
+    align-items: flex-start;
+  }
+  .stat-label {
+    width: 72px;
+  }
+}
+
+/* ── Kill the duplicate Streamlit auto-nav ───────────────────── */
+/* This removes the raw page-list nav Streamlit generates        */
+/* from the /pages/ folder, leaving only your custom sidebar     */
+[data-testid="stSidebarNav"] {
+  display: none !important;
+}
+[data-testid="stSidebarNavItems"] {
+  display: none !important;
+}
+/* Also hide the collapse/expand arrow Streamlit adds            */
+[data-testid="collapsedControl"] {
+  display: none !important;
+}
