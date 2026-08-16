@@ -152,7 +152,7 @@ frontend/
 
 ### Clone
 
-git clone https://github.com/YOUR_USERNAME/scout-agent.git
+git clone https://github.com/abhinav0singh/scout-agent.git
 
 cd scout-agent
 
